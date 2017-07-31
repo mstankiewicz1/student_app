@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head th:fragment="head">
+    <meta charset="utf-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous" />
+    <title>Form</title>
+</head>
+<body class="container">
+    <h1>Dodaj studenta</h1>
+    <form class="form-horizontal" th:action="@{/student/add}" method="post" th:object="${student}">
+        <div class="row">
+            <div class="col-lg-6">
+                <input type="hidden" th:field="*{id}" />
+                <div class="input-group">
+                    <label for="name">Imię:</label>
+                    <input class="form-control" type="text" id="name" th:field="*{name}" />
+                    <div class="help-block" th:if="${#fields.hasErrors('name')}" th:errors="*{name}"></div>
+                </div>
+
+                <div class="input-group">
+                    <label for="surname">Nazwisko:</label>
+                    <input class="form-control" type="text" id="surname" th:field="*{surname}" /><br />
+                    <div class="help-block" th:if="${#fields.hasErrors('surname')}" th:errors="*{surname}"></div>
+                </div>
+
+                <input type="hidden" th:field="*{studentDetails.id}" />
+
+                <div class="input-group">
+                    <label for="surname">Numer telefonu:</label>
+                    <input class="form-control" type="text" id="phoneNo" th:field="*{studentDetails.phoneNo}" /><br />
+                    <div class="help-block" th:if="${#fields.hasErrors('studentDetails.phoneNo')}" th:errors="*{studentDetails.phoneNo}"></div>
+                </div>
+
+                <div class="input-group">
+                    <label for="surname">PESEL:</label>
+                    <input class="form-control" type="text" id="pesel" th:field="*{studentDetails.pesel}" /><br />
+                    <div class="help-block" th:if="${#fields.hasErrors('studentDetails.pesel')}" th:errors="*{studentDetails.pesel}"></div>
+                </div>
+            </div>
+            <div class="col-lg-6">
+                <input type="hidden" th:field="*{address.id}" />
+
+                <div class="input-group">
+                    <label for="zipCode">Kod pocztowy:</label>
+                    <input class="form-control" type="text" id="zipCode"
+                           th:field="*{address.zipCode}" /><br />
+                    <div class="help-block" th:if="${#fields.hasErrors('address.zipCode')}"
+                         th:errors="*{address.zipCode}"></div>
+                </div>
+
+                <div class="input-group">
+                    <label for="city">Miasto:</label>
+                    <input class="form-control" type="text" id="city"
+                           th:field="*{address.city}" /><br />
+                    <div class="help-block" th:if="${#fields.hasErrors('address.city')}"
+                         th:errors="*{address.city}"></div>
+                </div>
+
+                <div class="input-group">
+                    <label for="streetName">Ulica:</label>
+                    <input class="form-control" type="text" id="streetName"
+                           th:field="*{address.streetName}" /><br />
+                    <div class="help-block" th:if="${#fields.hasErrors('address.streetName')}"
+                         th:errors="*{address.streetName}"></div>
+                </div>
+
+                <div class="input-group">
+                    <label for="streetNo">Numer ulicy:</label>
+                    <input class="form-control" type="text" id="streetNo"
+                           th:field="*{address.streetNo}" /><br />
+                    <div class="help-block" th:if="${#fields.hasErrors('address.streetNo')}"
+                         th:errors="*{address.streetNo}"></div>
+                </div>
+
+                <div class="input-group">
+                    <label for="apartNo">Numer mieszkania:</label>
+                    <input class="form-control" type="text" id="apartNo"
+                           th:field="*{address.apartNo}" /><br />
+                    <div class="help-block" th:if="${#fields.hasErrors('address.apartNo')}"
+                         th:errors="*{address.apartNo}"></div>
+                </div>
+
+
+            </div>
+        </div>
+
+        <div class="input-group">
+            <button class="btn btn-primary" type="submit">Dodaj</button>
+        </div>
+    </form>
+
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+</body>
+</html>

@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
+<head>
+    <title>Student login</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous" />
+    <link th:href="@{/css/login.css}" rel="stylesheet" media="all" />
+</head>
+<body>
+
+<div class="container"> 
+    <form th:action="@{/register}" th:object="${user}" method="post" class="form-signin">
+        <h2 class="form-signin-heading">Formularz rejestracji</h2>
+
+       <div class="input-group">
+        <label for="login" class="sr-only">Nazwa użytkownika</label>
+        <input type="text"
+               th:field="*{login}"
+               id="login"
+               name="login" class="form-control"
+               placeholder="Nazwa użytkownika"
+               required="required"
+               autofocus="autofocus" />
+        <div class="help-block" th:if="${#fields.hasErrors('login')}" th:errors="*{login}"></div>
+       </div>
+
+        <div class="input-group">
+            <label for="password" class="sr-only">Hasło</label>
+            <input type="password"
+                   th:field="*{password}"
+                   id="password"
+                   class="form-control"
+                   name="password"
+                   placeholder="Hasło"
+                   required="required" />
+            <div class="help-block" th:if="${#fields.hasErrors('password')}" th:errors="*{password}"></div>
+        </div>
+
+        <div class="input-group">
+            <label for="passwordConfirm" class="sr-only">Powtórz hasło</label>
+            <input type="password" id="passwordConfirm"
+                   th:field="*{passwordConfirm}"
+                   class="form-control"
+                   name="passwordConfirm"
+                   placeholder="Powtórz hasło"
+                   required="required" />
+                <div class="help-block" th:if="${#fields.hasErrors('passwordConfirm')}"
+                     th:errors="*{passwordConfirm}"></div>
+        </div>
+        <button class="btn btn-lg btn-primary btn-block" type="submit">Rejestruj</button>
+    </form>
+
+</div> <!-- /container -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+
+</body>
+</html>
